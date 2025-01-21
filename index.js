@@ -86,8 +86,18 @@ client.on('interactionCreate', interaction => {
 client.login(process.env.LoginToken)
 
 
+const express = require('express');
+const app = express();
+
+// Set up the port to bind (Render provides a PORT environment variable)
 const PORT = process.env.PORT || 3000;
 
+// Basic route to keep the app alive
+app.get('/', (req, res) => {
+    res.send('Bot is running');
+});
+
+// Start server listening on the port
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
